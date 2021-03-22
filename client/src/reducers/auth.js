@@ -1,6 +1,8 @@
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
 } from '../actions/types';
@@ -23,6 +25,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         user: payload,
       };
+    case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       localStorage.setItem('token', payload.token);
       return {
@@ -32,6 +35,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
       };
     case AUTH_ERROR:
+    case LOGIN_FAIL:
     case REGISTER_FAIL:
       localStorage.removeItem('token');
       return {
