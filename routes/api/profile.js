@@ -164,11 +164,11 @@ router.delete('/', auth, async (req, res) => {
 });
 
 /*
- * @route  PUT api/profile/experience
+ * @route  POST api/profile/experience
  * @desc   Add profile experience
  * @access Private
  */
-router.put(
+router.post(
   '/experience',
   [
     auth,
@@ -244,11 +244,11 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 });
 
 /*
- * @route  PUT api/profile/education
+ * @route  POST api/profile/education
  * @desc   Add profile education
  * @access Private
  */
-router.put(
+router.post(
   '/education',
   [
     auth,
