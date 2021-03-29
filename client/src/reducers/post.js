@@ -1,4 +1,6 @@
 import {
+  ADD_COMMENT,
+  REMOVE_COMMENT,
   ADD_POST,
   DELETE_POST,
   GET_POST,
@@ -50,12 +52,26 @@ export default function postReducer(state = initialState, action) {
         posts: state.posts.filter((post) => post._id !== payload),
         loading: false,
       };
-
     case ADD_POST:
       return {
         ...state,
         posts: [payload, ...state.posts],
         loading: false,
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload.comments },
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id === payload
+          ),
+        },
       };
     default:
       return {
